@@ -1,6 +1,7 @@
 import 'package:clothing_app/app_styles.dart';
 import 'package:clothing_app/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -11,28 +12,29 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
-  List<String> categories =[
+  List<String> categories = [
     "Tüm Eşyalar",
     "Elbiseler",
     "Şapka",
     "Saat",
   ];
 
-  List<String> icon =[
+  List<String> icons = [
     'all_items_icon',
     'dress_icon',
     'hat_icon',
     'watch_icon',
   ];
 
-  List<String> images =[
+  List<String> images = [
     'images-01',
     'images-02',
     'images-03',
     'images-04',
     'images-05',
   ];
+
+  int current = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -119,9 +121,60 @@ class _HomeScreenState extends State<HomeScreen> {
               itemCount: categories.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                return GestureDetector();
+                return GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      current = index;
+                    });
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(
+                        left: index == 0 ? sPaddinHorizontal : 15,
+                        right: index == categories.length-1 ? sPaddinHorizontal: 0 ),
+                        padding:  const EdgeInsets.symmetric(horizontal: 10),
+                    height: 36,
+                    decoration: BoxDecoration(
+                      color: current == index ? sBrown : sWhite,
+                      borderRadius: BorderRadius.circular(8),
+                      border: current == index
+                          ? null
+                          : Border.all(
+                              color: sLightGrey,
+                              width: 1,
+                            ),
+                    ),
+                    child: Row(
+                      children: [
+                        SvgPicture.asset(current == index
+                            ? 'assets/${icons[index]}_selected.svg'
+                            : 'assets/${icons[index]}_unselected.svg'),
+                        const SizedBox(width: 4),
+                        Text(
+                          categories[index],
+                          style: sEncodeSansMedium.copyWith(
+                            color: current == index ? sWhite : sDarkBrown,
+                            fontSize: SizeConfig.blockSizeHorizontal! * 3,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
               },
             ),
+          ),
+          const SizedBox(height: 31),
+          MasonryGridView.count(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            crossAxisCount: 2,
+            itemCount:  images.length,
+            padding: const EdgeInsets.symmetric(
+              horizontal: sPaddinHorizontal
+            ),
+            itemBuilder:(context, index){
+              return Column();
+            } ,
           ),
         ],
       ),
@@ -139,7 +192,7 @@ class TextClassName {
   );
 
   Text nameText = Text(
-    "Aylin Balta",
+    "Enzel Balta",
     style: sEncodeSansBold.copyWith(
       color: sDarkBrown,
       fontSize: SizeConfig.blockSizeHorizontal! * 4,
