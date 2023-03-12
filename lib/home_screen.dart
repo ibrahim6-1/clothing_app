@@ -26,12 +26,15 @@ class _HomeScreenState extends State<HomeScreen> {
     'watch_icon',
   ];
 
-  List<String> images = [
-    'images-01',
-    'images-02',
-    'images-03',
-    'images-04',
-    'images-05',
+  List<String> image = [
+    'image-01.png',
+    'image-02.png',
+    'image-03.png',
+    'image-04.png',
+    'image-05.jpg',
+    'image-06.jpg',
+    'image-07.jpg',
+    'image-08.jpg',
   ];
 
   int current = 0;
@@ -130,8 +133,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Container(
                     margin: EdgeInsets.only(
                         left: index == 0 ? sPaddinHorizontal : 15,
-                        right: index == categories.length-1 ? sPaddinHorizontal: 0 ),
-                        padding:  const EdgeInsets.symmetric(horizontal: 10),
+                        right: index == categories.length - 1
+                            ? sPaddinHorizontal
+                            : 0),
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
                     height: 36,
                     decoration: BoxDecoration(
                       color: current == index ? sBrown : sWhite,
@@ -168,13 +173,89 @@ class _HomeScreenState extends State<HomeScreen> {
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             crossAxisCount: 2,
-            itemCount:  images.length,
-            padding: const EdgeInsets.symmetric(
-              horizontal: sPaddinHorizontal
-            ),
-            itemBuilder:(context, index){
-              return Column();
-            } ,
+            crossAxisSpacing: 20,
+            mainAxisSpacing: 23,
+            itemCount: image.length,
+            padding: const EdgeInsets.symmetric(horizontal: sPaddinHorizontal),
+            itemBuilder: (context, index) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Stack(
+                    children: [
+                      Positioned(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(sBorderRadius),
+                          child: Image.asset(
+                            'assets/images/${image[index]}',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        right: 12,
+                        top: 12,
+                        child: GestureDetector(
+                          onTap: () {},
+                          child: SvgPicture.asset(
+                              'assets/favorite_cloth_icon_unselected.svg'),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    'Modern hafif giysiler',
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: sEncodeSansSemiBold.copyWith(
+                      color: sDarkBrown,
+                      fontSize: SizeConfig.blockSizeHorizontal! * 3.5,
+                    ),
+                  ),
+                  Text(
+                    'Modern elbise',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: sEncodeSansRegular.copyWith(
+                      color: sGrey,
+                      fontSize: SizeConfig.blockSizeHorizontal! * 2.5,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        '361.99 ₺',
+                        style: sEncodeSansSemiBold.copyWith(
+                          color: sDarkBrown,
+                          fontSize: SizeConfig.blockSizeHorizontal! * 3.5,
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          const Icon(
+                            Icons.star,
+                            color: sYellow,
+                            size: 16,
+                          ),
+                          const SizedBox(width: 8),
+                          Text(
+                            '5.0',
+                            style: sEncodeSansRegular.copyWith(
+                              color: sDarkBrown,
+                              fontSize: SizeConfig.blockSizeHorizontal! * 3,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  )
+                ],
+              );
+            },
           ),
         ],
       ),
