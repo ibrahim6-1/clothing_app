@@ -8,6 +8,8 @@ const Color sGrey = Color(0xffa4aaad);
 const Color sDarkGrey = Color(0xff878787);
 const Color sLightGrey = Color(0xffededed);
 
+const Color sBorderColor = Color(0xffEAEAEA);
+
 const Color sWhite = Color(0xffffffff);
 const Color sBlack = Color(0xff111111);
 const Color sYellow = Color(0xffffd33c);
