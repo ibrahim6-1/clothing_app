@@ -207,7 +207,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    'Modern hafif giysiler',
+                    'Modern hafif Elbiseler',
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: sEncodeSansSemiBold.copyWith(
