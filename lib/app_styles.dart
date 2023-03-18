@@ -13,6 +13,7 @@ const Color sBorderColor = Color(0xffEAEAEA);
 const Color sWhite = Color(0xffffffff);
 const Color sBlack = Color(0xff111111);
 const Color sYellow = Color(0xffffd33c);
+const Color sBlue =Color(0xff347EFB);
 
 const double sBorderRadius = 12.0;
 const double sPaddinHorizontal = 24.0;
