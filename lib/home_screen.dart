@@ -207,7 +207,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    'Modern hafif Elbiseler',
+                    'Modern Hafif Elbiseler',
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: sEncodeSansSemiBold.copyWith(
@@ -216,7 +216,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   Text(
-                    'Modern elbise',
+                    'Modern Elbise',
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: sEncodeSansRegular.copyWith(
@@ -275,7 +275,7 @@ class TextClassName {
   );
 
   Text nameText = Text(
-    "Enzel Balta",
+    "Hava Balta",
     style: sEncodeSansBold.copyWith(
       color: sDarkBrown,
       fontSize: SizeConfig.blockSizeHorizontal! * 4,

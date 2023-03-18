@@ -50,6 +50,7 @@ class _MyAppState extends State<MyApp> {
                 icon: _currentIndex == 1
                     ? SvgPicture.asset('assets/cart_icon_selected.svg')
                     : SvgPicture.asset('assets/cart_icon_unselected.svg'),
+                    
               ),
                CustomNavigationBarItem(
                 icon: _currentIndex == 2
@@ -66,6 +67,7 @@ class _MyAppState extends State<MyApp> {
             onTap: (index){
               setState(() {
                 _currentIndex = index;
+                
               });
             },
           ),
